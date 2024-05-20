@@ -1,0 +1,77 @@
+.signIn_body {
+  background-color: #0a323b;
+}
+
+.signIn {
+  width: 350px;
+  margin: 100px auto;
+  @include grid(1fr, 10px);
+
+  h1 {
+    font-size: 64px;
+    font-weight: 700;
+    color: $color-white;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    color: $color-white;
+  }
+
+  &_input {
+    width: 85%;
+    height: 40px;
+    margin: 0 auto;
+    padding-left: 7px;
+    border-radius: 5px;
+    font-size: 22px;
+    color: $color-white;
+    background-color: #ffffff30;
+    border: none;
+    outline: 0;
+    outline-offset: 0;
+
+    :hover {
+      border: none;
+    }
+  }
+  &_input::placeholder {
+    color: #ffffffe3;
+  }
+  &_check {
+    padding-left: 7.5%;
+    @include flex(center, flex-start, 5px);
+    color: $color-white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  &_check:hover{
+    color: #ffffffa9;
+  }
+
+  a {
+    font-size: 15;
+    color: $color-white;
+    text-align: center;
+  }
+  a:hover {
+    color: #ffffffa0;
+  }
+
+  button {
+    width: 85%;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #46e14b;
+    border: none;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 20px;
+    color: $color-white;
+  }
+
+  button:hover {
+    background-color: #47ed4dc9;
+  }
+}
