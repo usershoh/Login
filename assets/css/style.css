@@ -223,9 +223,10 @@ p {
   grid-template-columns: 1fr;
   gap: 15px;
   padding: 20px;
-  position: absolute;
+  position: fixed;
   top: 30px;
   right: 30px;
+  background-color: #fff;
 }
 .registered h1 {
   font-size: 20px;

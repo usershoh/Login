@@ -37,9 +37,10 @@
   border-radius: 20px 0 20px 20px;
   @include grid(1fr, 15px);
   padding: 20px;
-  position: absolute;
+  position: fixed;
   top: 30px;
   right: 30px;
+  background-color: $color-white;
 
   h1 {
     font-size: 20px;

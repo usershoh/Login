@@ -44,6 +44,7 @@ function login_signIn() {
       localStorage.setItem("password", signIn_password.value);
       localStorage.setItem("name", signIn_name.value);
       localStorage.setItem("surname", signIn_surname.value);
+      window.location = "./all.html";
     });
   } catch (error) {}
 
@@ -57,26 +58,29 @@ function login_signIn() {
         local_password === login_password.value
       ) {
         window.location = "./all.html";
-        // registeredFunc();
       }
     });
   } catch (error) {}
 }
 login_signIn();
+registeredFunc();
 
-// function registeredFunc() {
-//   registered.innerHTML = `
-//       <h1>Siz ro'yxatdan o'tdingiz</h1>
-//       <div class="registered_p">
-//         <p>Name:</p>
-//         <p>Surname:</p>
-//         <p>Email:</p>
-//         <p>Password:</p>
-//       </div>
-//       <button class="registered_btn">ok</button>
-//     `;
-//   registered.style.border = "1px solid #000";
-// }
+function registeredFunc() {
+  registered.innerHTML = `
+      <h1>Siz ro'yxatdan o'tdingiz</h1>
+      <div class="registered_p">
+        <p>Name: ${localStorage.getItem("name")}</p>
+        <p>Surname: ${localStorage.getItem("surname")}</p>
+        <p>Email: ${localStorage.getItem("mail")}</p>
+        <p>Password: ${localStorage.getItem("password")}</p>
+      </div>
+      <button class="registered_btn">ok</button>
+    `;
+  registered.style.border = "1px solid #000";
+  registered_btn.addEventListener("click", () => {
+    registered.remove();
+  });
+}
 
 function renderAllProducts(data) {
   data.forEach((value) => {
