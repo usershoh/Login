@@ -1,49 +1,15 @@
 let signIn = document.querySelector(".signIn");
-let login = document.querySelector(".login");
-
 let signIn_name = document.querySelector(".signIn_name");
 let signIn_surname = document.querySelector(".signIn_surname");
 let signIn_mail = document.querySelector(".signIn_mail");
 let signIn_password = document.querySelector(".signIn_password");
 
+let login = document.querySelector(".login");
 let login_mail = document.querySelector(".login_mail");
 let login_password = document.querySelector(".login_password");
 
 let registered = document.querySelector(".registered");
-
 let loader = document.querySelector(".loader");
-
-if (window.location.href === "http://127.0.0.1:5500/all.html") {
-  let getDataAll = async () => {
-    let request = await fetch("https://fakestoreapi.com/products");
-    return request.json();
-  };
-  getDataAll().then((data) => renderAllProducts(data));
-}
-
-if (window.location.href === "http://127.0.0.1:5500/mens.html") {
-  let getDataMens = async () => {
-    let request = await fetch("https://fakestoreapi.com/products");
-    return request.json();
-  };
-  getDataMens().then((data) => renderMensProducts(data));
-}
-
-if (window.location.href === "http://127.0.0.1:5500/jewelery.html") {
-  let renderJewelry = async () => {
-    let request = await fetch("https://fakestoreapi.com/products");
-    return request.json();
-  };
-  renderJewelry().then((data) => getDataJewelry(data));
-}
-
-if (window.location.href === "http://127.0.0.1:5500/electronic.html") {
-  let renderElec = async () => {
-    let request = await fetch("https://fakestoreapi.com/products");
-    return request.json();
-  };
-  renderElec().then((data) => getDataElec(data));
-}
 
 function login_signIn() {
   try {
@@ -111,32 +77,38 @@ function loaderData(load) {
   }
 }
 
-function renderAllProducts(data) {
+let getDataAll = async () => {
+  loaderData(true);
+  let request = await fetch("https://fakestoreapi.com/products");
+  loaderData(false);
+  return request.json();
+};
+getDataAll().then((data) => getData4Func(data));
+
+function getData4Func(data) {
   if (window.location.href === "http://127.0.0.1:5500/all.html") {
     data.forEach((value) => {
       let all_products = document.querySelector(".all_products");
       let card = document.createElement("div");
       card.setAttribute("class", "card");
       card.innerHTML = `
-        <img src=${value.image} alt="" />
-          <h1>${value.title.slice(0, 10)}...</h1>
-          <p>${value.description.slice(0, 50)}...</p>
-          <div class="price">
-            <p>summa</p>
-            <div>
-              <h2>-10%</h2>
-              <h3>${value.price}</h3>
+          <img src=${value.image} alt="" />
+            <h1>${value.title.slice(0, 10)}...</h1>
+            <p>${value.description.slice(0, 50)}...</p>
+            <div class="price">
+              <p>summa</p>
+              <div>
+                <h2>-10%</h2>
+                <h3>${value.price}</h3>
+              </div>
             </div>
-          </div>
-          <button>Add to card</button>
-          <button>Buy now</button>
-        `;
+            <button>Add to card</button>
+            <button>Buy now</button>
+          `;
       all_products.append(card);
     });
   }
-}
 
-function renderMensProducts(data) {
   if (window.location.href === "http://127.0.0.1:5500/mens.html") {
     data.forEach((value) => {
       if (value.category === "men's clothing") {
@@ -144,26 +116,24 @@ function renderMensProducts(data) {
         let card_men = document.createElement("div");
         card_men.setAttribute("class", "card");
         card_men.innerHTML = `
-            <img src=${value.image} alt="" />
-              <h1>${value.title.slice(0, 10)}...</h1>
-              <p>${value.description.slice(0, 50)}...</p>
-              <div class="price">
-                <p>summa</p>
-                <div>
-                  <h2>-10%</h2>
-                  <h3>${value.price}</h3>
+              <img src=${value.image} alt="" />
+                <h1>${value.title.slice(0, 10)}...</h1>
+                <p>${value.description.slice(0, 50)}...</p>
+                <div class="price">
+                  <p>summa</p>
+                  <div>
+                    <h2>-10%</h2>
+                    <h3>${value.price}</h3>
+                  </div>
                 </div>
-              </div>
-              <button>Add to card</button>
-              <button>Buy now</button>
-            `;
+                <button>Add to card</button>
+                <button>Buy now</button>
+              `;
         mens_products.append(card_men);
       }
     });
   }
-}
 
-function getDataJewelry(data) {
   if (window.location.href === "http://127.0.0.1:5500/jewelery.html") {
     data.forEach((value) => {
       if (value.category === "jewelery") {
@@ -171,33 +141,6 @@ function getDataJewelry(data) {
         let card_jew = document.createElement("div");
         card_jew.setAttribute("class", "card");
         card_jew.innerHTML = `
-                <img src=${value.image} alt="" />
-                  <h1>${value.title.slice(0, 10)}...</h1>
-                  <p>${value.description.slice(0, 50)}...</p>
-                  <div class="price">
-                    <p>summa</p>
-                    <div>
-                      <h2>-10%</h2>
-                      <h3>${value.price}</h3>
-                    </div>
-                  </div>
-                  <button>Add to card</button>
-                  <button>Buy now</button>
-                `;
-        jew_cards.append(card_jew);
-      }
-    });
-  }
-}
-
-function getDataElec(data) {
-  if (window.location.href === "http://127.0.0.1:5500/electronic.html") {
-    data.forEach((value) => {
-      if (value.category === "electronics") {
-        let elec_cards = document.querySelector(".elec_cards");
-        let card_elec = document.createElement("div");
-        card_elec.setAttribute("class", "card");
-        card_elec.innerHTML = `
                   <img src=${value.image} alt="" />
                     <h1>${value.title.slice(0, 10)}...</h1>
                     <p>${value.description.slice(0, 50)}...</p>
@@ -211,6 +154,31 @@ function getDataElec(data) {
                     <button>Add to card</button>
                     <button>Buy now</button>
                   `;
+        jew_cards.append(card_jew);
+      }
+    });
+  }
+
+  if (window.location.href === "http://127.0.0.1:5500/electronic.html") {
+    data.forEach((value) => {
+      if (value.category === "electronics") {
+        let elec_cards = document.querySelector(".elec_cards");
+        let card_elec = document.createElement("div");
+        card_elec.setAttribute("class", "card");
+        card_elec.innerHTML = `
+                    <img src=${value.image} alt="" />
+                      <h1>${value.title.slice(0, 10)}...</h1>
+                      <p>${value.description.slice(0, 50)}...</p>
+                      <div class="price">
+                        <p>summa</p>
+                        <div>
+                          <h2>-10%</h2>
+                          <h3>${value.price}</h3>
+                        </div>
+                      </div>
+                      <button>Add to card</button>
+                      <button>Buy now</button>
+                    `;
         elec_cards.append(card_elec);
       }
     });
