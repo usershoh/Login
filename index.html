@@ -10,24 +10,29 @@
     <form class="signIn">
       <h1>Sing In</h1>
       <p>Sign in and start managing your canditates!</p>
-      <input class="signIn_input signIn_name" type="text" placeholder="Name" />
+      <input class="signIn_input signIn_name" type="text" placeholder="Name" required />
       <input
         class="signIn_input signIn_surname"
         type="text"
         placeholder="Surname"
+        required
       />
       <input
         class="signIn_input signIn_mail"
         type="email"
         placeholder="Mail:"
+        required
+        minlength="15"
       />
       <input
         class="signIn_input signIn_password"
         type="password"
         placeholder="Password:"
+        required
+        minlength="5"
       />
       <div class="signIn_check">
-        <input id="check" name="check" type="checkbox" />
+        <input id="check" name="check" type="checkbox" required/>
         <label for="check">remember me</label>
       </div>
       <a href="./Login.html" class="signIn_a">Siz oldim ro'yxatdan o'tkanmisiz?</a>

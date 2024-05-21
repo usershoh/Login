@@ -10,14 +10,20 @@
     <form class="login">
       <h1>Sing In</h1>
       <p>Sign in and start managing your canditates!</p>
-      <input class="signIn_input login_mail" type="email" placeholder="Mail:" />
+      <input
+        class="signIn_input login_mail"
+        type="email"
+        placeholder="Mail:"
+        required
+      />
       <input
         class="signIn_input login_password"
         type="password"
         placeholder="Password:"
+        required
       />
       <div class="signIn_check">
-        <input id="check" name="check" type="checkbox" />
+        <input id="check" name="check" type="checkbox" required />
         <label for="check">remember me</label>
       </div>
       <button>Login</button>
